@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
+import './App.css';
+import MovieList from './Componets/MovieList'
+import Addmovie from './Componets/Addmovie';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [movie,setMovie]=useState([{title:"Annihilation",rate:4,image:"https://fr.web.img3.acsta.net/pictures/18/02/23/12/09/5079145.jpg"},
+                                   {title:"StarWars",rate:3,image:"https://fr.web.img6.acsta.net/pictures/19/10/22/10/17/3326733.jpg"}])
+  const ajoutmovie=(title,image,rate)=>{
+    setMovie([...movie,{title:title,image:image,rate:rate}])
+  }
+     return (
+    <div className="App" >
+      <div >
+      <MovieList movie={movie}/>
+      </div>
+      <Addmovie ajoutmovie={ajoutmovie}/>
     </div>
   );
 }
